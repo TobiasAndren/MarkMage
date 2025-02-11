@@ -1,0 +1,24 @@
+{
+  "name": "markmage",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/TobiasAndren/MarkMage#readme",
+  "bugs": {
+    "url": "https://github.com/TobiasAndren/MarkMage/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TobiasAndren/MarkMage.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "pdfkit": "^0.16.0",
+    "snarkdown": "^2.0.0"
+  }
+}
