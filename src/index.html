@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarkMage</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="text-picker-container">
+            <div class="color-picker-container">
+                <button id="text-color-picker"></button>
+            </div>
+            <p>pick a text color</p>
+        </div>
+        <div class="bg-picker-container">
+            <p>pick a background color</p>
+            <div class="color-picker-container">
+                <button id="bg-color-picker"></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="textfield-container">
+            <textarea class="textfield" id="markdown-input"></textarea>
+        </div>
+        <div class="textfield-container">
+            <article class="textfield" id="preview"></article>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/snarkdown@1.2.2/dist/snarkdown.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr"></script>
+    <script>
+        function renderMarkdown() {
+            const input = document.getElementById("markdown-input").value;
+            document.getElementById("preview").innerHTML = snarkdown(input);
+        }
+
+        const textPickr = Pickr.create({
+            el: "#text-color-picker",
+            theme: "classic",
+            default: "#000000",
+            components: {
+                preview: true,
+                opacity: true,
+                hue: true,
+                interaction: {
+                    hex: true,
+                    rgba: true,
+                    input: true,
+                    clear: true,
+                    save: true,
+                },
+            },
+        });
+
+        const bgPickr = Pickr.create({
+            el: '#bg-color-picker',
+            theme: 'classic',
+            default: '#ffffff',
+            components: {
+                preview: true,
+                opacity: true,
+                hue: true,
+                interaction: {
+                    hex: true,
+                    rgba: true,
+                    input: true,
+                    clear: true,
+                    save: true
+                }
+            }
+        });
+
+        textPickr.on("save", (color) => {
+            document.getElementById("preview").style.color = color.toHEXA().toString();
+        });
+
+        bgPickr.on('save', (color) => {
+            document.getElementById('preview').style.backgroundColor = color.toHEXA().toString();
+        });
+
+        document
+            .getElementById("markdown-input")
+            .addEventListener("input", renderMarkdown);
+    </script>
+</body>
+
+</html>
