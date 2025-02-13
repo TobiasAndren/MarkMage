@@ -1,6 +1,8 @@
 import express from "express";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
+import fs from "fs";
+import puppeteer from "puppeteer";
 
 const app = express();
 const port = 3000;
