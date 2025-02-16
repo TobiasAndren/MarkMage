@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
     <header class="header">
         <div class="text-picker-container">
@@ -16,6 +14,11 @@
                 <button id="text-color-picker"></button>
             </div>
             <p>pick a text color</p>
+        </div>
+        <div class="alignment-container">
+            <button id="align-left" class="align-btn">Left</button>
+            <button id="align-center" class="align-btn">Center</button>
+            <button id="align-right" class="align-btn">Right</button>
         </div>
         <div class="bg-picker-container">
             <p>pick a background color</p>
@@ -86,10 +89,27 @@
             document.getElementById('preview').style.backgroundColor = color.toHEXA().toString();
         });
 
+        const alignButtons = {
+            left: document.getElementById('align-left'),
+            center: document.getElementById('align-center'),
+            right: document.getElementById('align-right')
+        };
+
+        function setAlignment(alignment) {
+            document.getElementById('preview').style.textAlign = alignment;
+            Object.values(alignButtons).forEach(btn => btn.classList.remove('active'));
+            alignButtons[alignment].classList.add('active');
+        }
+
+        alignButtons.left.addEventListener('click', () => setAlignment('left'));
+        alignButtons.center.addEventListener('click', () => setAlignment('center'));
+        alignButtons.right.addEventListener('click', () => setAlignment('right'));
+
+        setAlignment('left');
+
         document
             .getElementById("markdown-input")
             .addEventListener("input", renderMarkdown);
     </script>
 </body>
-
 </html>

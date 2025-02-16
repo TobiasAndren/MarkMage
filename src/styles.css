@@ -8,6 +8,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 
 .text-picker-container {
@@ -23,6 +24,30 @@
     align-items: center;
     justify-content: end;
     gap: 10px;
+}
+
+.alignment-container {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.align-btn {
+    padding: 5px 10px;
+    cursor: pointer;
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+}
+
+.align-btn:hover {
+    background: #e0e0e0;
+}
+
+.align-btn.active {
+    background: #ddd;
+    border-color: #999;
 }
 
 .color-picker-container {
