@@ -30,15 +30,16 @@
 
     <div class="container">
         <div class="textfield-container">
-            <textarea class="textfield" id="markdown-input"></textarea>
+            <textarea class="textfield" id="markdown-input" placeholder="Enter your Markdown here..."></textarea>
         </div>
         <div class="textfield-container">
             <article class="textfield" id="preview"></article>
+            <button id="export-pdf" class="export-btn">Export as PDF</button>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/snarkdown@1.2.2/dist/snarkdown.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
     <script src="editor.js"></script>
 </body>
 </html>

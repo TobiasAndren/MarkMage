@@ -64,14 +64,45 @@
 }
 
 .textfield-container {
-    height: 100vh;
+    height: calc(100vh - 50px);
     width: 50vw;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .textfield {
     height: 90%;
     width: 90%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#markdown-input {
+    resize: none;
+    font-family: monospace;
+}
+
+#preview {
+    overflow-y: auto;
+    background: white;
+    border: 1px solid #ccc;
+}
+
+.export-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.export-btn:hover {
+    background-color: #0056b3;
 }

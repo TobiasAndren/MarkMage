@@ -1,6 +1,9 @@
 function renderMarkdown() {
     const input = document.getElementById("markdown-input").value;
-    document.getElementById("preview").innerHTML = snarkdown(input);
+    console.log('Markdown input:', input);
+    const html = snarkdown(input);
+    console.log('Converted HTML:', html);
+    document.getElementById("preview").innerHTML = html;
 }
 
 const textPickr = Pickr.create({
@@ -68,3 +71,55 @@ setAlignment('left');
 document
     .getElementById("markdown-input")
     .addEventListener("input", renderMarkdown);
+
+document.getElementById('export-pdf').addEventListener('click', async () => {
+    const preview = document.getElementById('preview');
+    const htmlContent = preview.innerHTML;
+    const textColor = preview.style.color || '#000000';
+    const backgroundColor = preview.style.backgroundColor || '#ffffff';
+    const textAlign = preview.style.textAlign || 'left';
+
+    console.log('Content being exported:', {
+        htmlContent: htmlContent,
+        contentLength: htmlContent.length,
+        textColor: textColor,
+        backgroundColor: backgroundColor,
+        textAlign: textAlign
+    });
+
+    try {
+        const response = await fetch('/generate-pdf', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                htmlContent,
+                textColor,
+                backgroundColor,
+                textAlign
+            })
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error('Server error:', errorData);
+            throw new Error(errorData.error || 'PDF generation failed');
+        }
+
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'markdown-export.pdf';
+        document.body.appendChild(a);
+        a.click();
+        
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+    } catch (error) {
+        console.error('Error exporting PDF:', error);
+        alert(`Failed to generate PDF: ${error.message}`);
+    }
+});

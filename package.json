@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "express": "^4.21.2",
-    "puppeteer": "^24.2.0",
+    "puppeteer": "^22.8.2",
     "snarkdown": "^2.0.0"
   },
   "devDependencies": {
