@@ -34,18 +34,16 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/snarkdown@1.2.2/dist/snarkdown.umd.min.js"></script>
+    <script type="module" src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr"></script>
     <script>
-        function renderMarkdown() {
-            const input = document.getElementById("markdown-input").value;
-            document.getElementById("preview").innerHTML = snarkdown(input);
-        }
+        const standardText = "#000000"
+        const standardBg = "#ffffff"
 
         const textPickr = Pickr.create({
             el: "#text-color-picker",
             theme: "classic",
-            default: "#000000",
+            default: standardText,
             components: {
                 preview: true,
                 opacity: true,
@@ -63,7 +61,7 @@
         const bgPickr = Pickr.create({
             el: '#bg-color-picker',
             theme: 'classic',
-            default: '#ffffff',
+            default: standardBg,
             components: {
                 preview: true,
                 opacity: true,
@@ -79,16 +77,28 @@
         });
 
         textPickr.on("save", (color) => {
-            document.getElementById("preview").style.color = color.toHEXA().toString();
+            if (color) {
+                document.getElementById("preview").style.color = color.toRGBA().toString();
+            } else {
+                document.getElementById("preview").style.color = standardText;
+            }
         });
 
-        bgPickr.on('save', (color) => {
-            document.getElementById('preview').style.backgroundColor = color.toHEXA().toString();
+        textPickr.on("clear", () => {
+            textPickr.setColor(standardText)
+        })
+
+        bgPickr.on("save", (color) => {
+            if (color) {
+                document.getElementById("preview").style.backgroundColor = color.toRGBA().toString();
+            } else {
+                document.getElementById("preview").style.backgroundColor = standardText;
+            }
         });
 
-        document
-            .getElementById("markdown-input")
-            .addEventListener("input", renderMarkdown);
+        bgPickr.on("clear", () => {
+            bgPickr.setColor(standardBg)
+        })
     </script>
 </body>
 
