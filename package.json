@@ -19,6 +19,7 @@
     "start": "nodemon index.js"
   },
   "dependencies": {
+    "dompurify": "^3.2.4",
     "express": "^4.21.2",
     "puppeteer": "^22.8.2",
     "snarkdown": "^2.0.0"
