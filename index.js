@@ -21,23 +21,22 @@ app.use(
 );
 app.use(express.json());
 
-
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "src", "index.html"));
 });
 
 app.post("/generate-pdf", async (req, res) => {
-  console.log('Received PDF generation request');
+  console.log("Received PDF generation request");
   let browser;
   try {
     const { htmlContent, textColor, backgroundColor, textAlign } = req.body;
-    
+
     browser = await puppeteer.launch({
-      headless: true
+      headless: true,
     });
-    
+
     const page = await browser.newPage();
-    
+
     const fullHtml = `
       <!DOCTYPE html>
       <html>
@@ -57,29 +56,28 @@ app.post("/generate-pdf", async (req, res) => {
         </body>
       </html>
     `;
-    
+
     await page.setContent(fullHtml);
-    
-    await page.waitForSelector('body');
-    
+
+    await page.waitForSelector("body");
+
     const pdf = await page.pdf({
-      format: 'A4',
+      format: "A4",
       margin: {
-        top: '20px',
-        right: '20px',
-        bottom: '20px',
-        left: '20px'
+        top: "20px",
+        right: "20px",
+        bottom: "20px",
+        left: "20px",
       },
-      printBackground: true
+      printBackground: true,
     });
-    
-    res.contentType('application/pdf');
-    res.send(pdf);
-    
+
+    res.contentType("application/pdf");
+    res.end(pdf);
   } catch (error) {
-    console.error('PDF generation error:', error);
+    console.error("PDF generation error:", error);
     res.status(500).json({
-      error: error.message
+      error: error.message,
     });
   } finally {
     if (browser) {

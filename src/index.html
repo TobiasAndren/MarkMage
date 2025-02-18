@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <header class="header">
         <div class="text-picker-container">
@@ -39,75 +41,9 @@
     </div>
 
 
-    <script type="module" src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr"></script>
-    <script>
-        const standardText = "#000000"
-        const standardBg = "#ffffff"
-
-        const textPickr = Pickr.create({
-            el: "#text-color-picker",
-            theme: "classic",
-            default: standardText,
-            components: {
-                preview: true,
-                opacity: true,
-                hue: true,
-                interaction: {
-                    hex: true,
-                    rgba: true,
-                    input: true,
-                    clear: true,
-                    save: true,
-                },
-            },
-        });
-
-        const bgPickr = Pickr.create({
-            el: '#bg-color-picker',
-            theme: 'classic',
-            default: standardBg,
-            components: {
-                preview: true,
-                opacity: true,
-                hue: true,
-                interaction: {
-                    hex: true,
-                    rgba: true,
-                    input: true,
-                    clear: true,
-                    save: true
-                }
-            }
-        });
-
-        textPickr.on("save", (color) => {
-            if (color) {
-                document.getElementById("preview").style.color = color.toRGBA().toString();
-            } else {
-                document.getElementById("preview").style.color = standardText;
-            }
-        });
-
-        textPickr.on("clear", () => {
-            textPickr.setColor(standardText)
-        })
-
-        bgPickr.on("save", (color) => {
-            if (color) {
-                document.getElementById("preview").style.backgroundColor = color.toRGBA().toString();
-            } else {
-                document.getElementById("preview").style.backgroundColor = standardText;
-            }
-        });
-
-        bgPickr.on("clear", () => {
-            bgPickr.setColor(standardBg)
-        })
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/snarkdown@1.2.2/dist/snarkdown.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+    <script type="module" src="snarkdown.js"></script>
     <script src="editor.js"></script>
 </body>
+
 </html>
