@@ -1,0 +1,11 @@
+kolla om man kan skriva en funktion för att göra line breaks vid enter
+
+namngivning
+
+sköt Snarkdown via backend så att det blir mer node-igt
+
+*fixa text alignment
+
+dompurify
+
+*generator-funktion
