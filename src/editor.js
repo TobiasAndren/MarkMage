@@ -81,12 +81,20 @@ alignButtons.right.addEventListener("click", () => setAlignment("right"));
 
 setAlignment("left");
 
+// New font selector code
+const fontSelector = document.getElementById('font-selector');
+
+fontSelector.addEventListener('change', (e) => {
+    document.getElementById('preview').style.fontFamily = e.target.value;
+});
+
 document.getElementById("export-pdf").addEventListener("click", async () => {
   const preview = document.getElementById("preview");
   const htmlContent = preview.innerHTML;
   const textColor = preview.style.color || "#000000";
   const backgroundColor = preview.style.backgroundColor || "#ffffff";
   const textAlign = preview.style.textAlign || "left";
+  const fontFamily = preview.style.fontFamily || "Arial, sans-serif";
 
   console.log("Content being exported:", {
     htmlContent: htmlContent,
@@ -94,6 +102,7 @@ document.getElementById("export-pdf").addEventListener("click", async () => {
     textColor: textColor,
     backgroundColor: backgroundColor,
     textAlign: textAlign,
+    fontFamily: fontFamily,
   });
 
   try {
@@ -107,6 +116,7 @@ document.getElementById("export-pdf").addEventListener("click", async () => {
         textColor,
         backgroundColor,
         textAlign,
+        fontFamily,
       }),
     });
 

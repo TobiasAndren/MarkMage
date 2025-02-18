@@ -106,3 +106,23 @@
 .export-btn:hover {
     background-color: #0056b3;
 }
+
+/* font stuff: */
+
+.font-selector-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.font-select {
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.font-select:hover {
+    background-color: #e0e0e0;
+}
