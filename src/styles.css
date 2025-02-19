@@ -164,11 +164,12 @@ body {
     height: 80%;
     width: 15%;
     border-radius: 3px;
-    border: 1px solid #ccc;
-    background-color: #f0f0f0;
+    border: 2px solid #7fffd4;
+    background-color: #ffffff;
     cursor: pointer;
+    transition: all 150ms ease-in-out;
 }
 
 .font-select:hover {
-    background-color: #e0e0e0;
+    opacity: 0.8;
 }
