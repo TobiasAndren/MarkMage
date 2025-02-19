@@ -11,18 +11,8 @@
 
 <body>
     <header class="header">
-        <div class="text-picker-container">
-            <div class="color-picker-container">
-                <button id="text-color-picker"></button>
-            </div>
-            <p>pick a text color</p>
-        </div>
-        <div class="alignment-container">
-            <button id="align-left" class="align-btn">Left</button>
-            <button id="align-center" class="align-btn">Center</button>
-            <button id="align-right" class="align-btn">Right</button>
-        </div>
-        <div class="font-selector-container">
+        <img src="" alt="">
+        <div class="preview-edit">
             <select id="font-selector" class="font-select">
                 <option value="Arial, sans-serif">Arial</option>
                 <option value="Times New Roman, serif">Times New Roman</option>
@@ -31,12 +21,20 @@
                 <option value="Verdana, sans-serif">Verdana</option>
                 <option value="Helvetica, sans-serif">Helvetica</option>
             </select>
-        </div>
-        <div class="bg-picker-container">
-            <p>pick a background color</p>
-            <div class="color-picker-container">
+            <div class="text-picker-container">
+                <button id="text-color-picker"></button>
+                <p class="text">Text color</p>
+            </div>
+            <div class="alignment-container">
+                <button id="align-left" class="align-btn">Left</button>
+                <button id="align-center" class="align-btn">Center</button>
+                <button id="align-right" class="align-btn">Right</button>
+            </div>
+            <div class="bg-picker-container">
+                <p class="text">Background color</p>
                 <button id="bg-color-picker"></button>
             </div>
+            <button id="export-pdf" class="export-btn">Export as PDF</button>
         </div>
     </header>
 
@@ -45,8 +43,7 @@
             <textarea class="textfield" id="markdown-input" placeholder="Enter your Markdown here..."></textarea>
         </div>
         <div class="textfield-container">
-            <article class="textfield" id="preview"></article>
-            <button id="export-pdf" class="export-btn">Export as PDF</button>
+            <article class="preview" id="preview"></article>
         </div>
     </div>
 
