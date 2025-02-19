@@ -29,7 +29,7 @@ app.post("/generate-pdf", async (req, res) => {
   console.log("Received PDF generation request");
   let browser;
   try {
-    const { htmlContent, textColor, backgroundColor, textAlign } = req.body;
+    const { htmlContent, textColor, backgroundColor, textAlign, fontFamily } = req.body;
 
     browser = await puppeteer.launch({
       headless: true,
@@ -46,8 +46,8 @@ app.post("/generate-pdf", async (req, res) => {
               color: ${textColor};
               background-color: ${backgroundColor};
               text-align: ${textAlign};
+              font-family: ${fontFamily};
               padding: 20px;
-              font-family: Arial, sans-serif;
             }
           </style>
         </head>
@@ -58,7 +58,6 @@ app.post("/generate-pdf", async (req, res) => {
     `;
 
     await page.setContent(fullHtml);
-
     await page.waitForSelector("body");
 
     const pdf = await page.pdf({
