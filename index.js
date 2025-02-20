@@ -29,7 +29,8 @@ app.post("/generate-pdf", async (req, res) => {
   console.log("Received PDF generation request");
   let browser;
   try {
-    const { htmlContent, textColor, backgroundColor, textAlign, fontFamily } = req.body;
+    const { htmlContent, textColor, backgroundColor, textAlign, fontFamily } =
+      req.body;
 
     browser = await puppeteer.launch({
       headless: true,
@@ -62,12 +63,6 @@ app.post("/generate-pdf", async (req, res) => {
 
     const pdf = await page.pdf({
       format: "A4",
-      margin: {
-        top: "20px",
-        right: "20px",
-        bottom: "20px",
-        left: "20px",
-      },
       printBackground: true,
     });
 

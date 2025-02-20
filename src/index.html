@@ -12,10 +12,10 @@
 <body>
     <header class="header">
         <div class="logo-container">
-            <img src="https://pbs.twimg.com/media/FfmvONQUUAAFuGz.jpg" alt="" class="logo">
+            <img src="https://pbs.twimg.com/media/FfmvONQUUAAFuGz.jpg" alt="Cat wearing a wizard outfit" class="logo">
             <h2 class="text">MarkMage</h2>
         </div>
-        <div class="preview-edit">
+        <div class="preview-edit-options">
             <select id="font-selector" class="font-select">
                 <option value="Arial, sans-serif">Arial</option>
                 <option value="Times New Roman, serif">Times New Roman</option>
@@ -34,19 +34,19 @@
                 <button id="align-right" class="align-btn">Right</button>
             </div>
             <div class="bg-picker-container">
-                <p class="text">Background color</p>
                 <button id="bg-color-picker"></button>
+                <p class="text">Background color</p>
             </div>
             <button id="export-pdf" class="export-btn">Export as PDF</button>
         </div>
     </header>
 
     <div class="container">
-        <div class="textfield-container">
+        <div class="textfield-container" aria-label="markdown-input-field">
             <h3 class="text">Markdown</h3>
             <textarea class="textfield" id="markdown-input" placeholder="Enter your Markdown here..."></textarea>
         </div>
-        <div class="textfield-container">
+        <div class="textfield-container" aria-label="pdf-preview-field">
             <h3 class="text">Preview</h3>
             <article class="preview" id="preview"></article>
         </div>

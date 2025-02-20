@@ -37,7 +37,7 @@ body {
     width: 40px;
 }
 
-.preview-edit {
+.preview-edit-options {
     width: 60%;
     display: flex;
     align-items: center;
@@ -128,10 +128,11 @@ body {
 
 .container {
     display: flex;
+    margin-top: 40px;
 }
 
 .textfield-container {
-    height: 100vh;
+    min-height: 100vh;
     width: 50vw;
     display: flex;
     justify-content: center;
@@ -140,16 +141,20 @@ body {
 }
 
 .textfield {
-    height: 90%;
+    min-height: 100%;
+    height: auto;
     width: 90%;
     margin-top: 10px;
     border-radius: 3px;
+    padding: 40px;
     border: 2px solid #7fffd4;
+    resize: none;
 }
 
 .preview {
     white-space: pre-line;
-    height: 90%;
+    min-height: 100%;
+    height: auto;
     width: 90%;
     margin-top: 10px;
     border-radius: 3px;
@@ -157,8 +162,6 @@ body {
     background-color: #ffffff;
     padding: 40px;
 }
-
-/* font stuff: */
 
 .font-select {
     height: 80%;
