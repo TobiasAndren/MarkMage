@@ -37,11 +37,27 @@ const bgPickr = Pickr.create({
   },
 });
 
+function updateLinkColors() {
+  const textColor = document.getElementById("preview").style.color;
+  document.querySelectorAll("#preview a").forEach((link) => {
+    link.style.color = textColor;
+  });
+}
+
 textPickr.on("save", (color) => {
+  const preview = document.getElementById("preview");
   if (color) {
-    document.getElementById("preview").style.color = color.toRGBA().toString();
+    const textColor = color.toRGBA().toString();
+    preview.style.color = textColor;
+
+    preview.querySelectorAll("a").forEach((link) => {
+      link.style.color = textColor;
+    });
   } else {
-    document.getElementById("preview").style.color = standardText;
+    preview.style.color = standardText;
+    preview.querySelectorAll("a").forEach((link) => {
+      link.style.color = standardText;
+    });
   }
 });
 
@@ -81,11 +97,10 @@ alignButtons.right.addEventListener("click", () => setAlignment("right"));
 
 setAlignment("left");
 
-// New font selector code
-const fontSelector = document.getElementById('font-selector');
+const fontSelector = document.getElementById("font-selector");
 
-fontSelector.addEventListener('change', (e) => {
-    document.getElementById('preview').style.fontFamily = e.target.value;
+fontSelector.addEventListener("change", (e) => {
+  document.getElementById("preview").style.fontFamily = e.target.value;
 });
 
 document.getElementById("export-pdf").addEventListener("click", async () => {

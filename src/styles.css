@@ -88,6 +88,14 @@ body {
     background-color: #ffffff;
     transition: all 150ms ease-in-out;
     border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-align-img {
+    height: 25px;
+    width: 25px;
 }
 
 .align-btn:hover {
