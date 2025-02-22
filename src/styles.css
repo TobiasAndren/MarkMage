@@ -184,3 +184,13 @@ body {
 .font-select:hover {
     opacity: 0.8;
 }
+
+.preview ul,
+.preview ol {
+    text-align: inherit;
+    list-style-position: inside;
+}
+
+.preview li {
+    text-align: inherit;
+}
