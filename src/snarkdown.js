@@ -7,7 +7,7 @@ const article = document.querySelector("article");
 textarea.addEventListener("input", () => {
   const markdown = textarea.value;
   const fixedMarkdown = markdown.replace(
-    /^((?!\s([-*]|\d\.)\s).\S.)$/gm,
+    /^((?!\s*([-+*]|\d+\.)\s).*\S.*)$/gm,
     "$1  "
   );
   const rawHtml = snarkdown(fixedMarkdown);
